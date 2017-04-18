@@ -14,18 +14,44 @@ import {
 import MapView from 'react-native-maps';
 
 export default class TravelWithMe extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      latitude:18.5204,
+      longitude:73.8567,
+    }
+  }
+  componentDidMount() {
+
+    this.watchId=navigator.geolocation.watchPosition(
+      (position) => {
+
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      },
+      (error) =>alert(JSON.stringify(error)),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    );
+  }
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.watchId);
+  }
   render() {
     return (
       <View style={styles.containerBox}>
         <MapView
           style={styles.map}
           initialRegion={{
-            latitude: 18.5204,
-            longitude: 73.8567,
+            latitude: this.state.latitude,
+            longitude: this.state.longitude,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
-        />
+        >
+
+        </MapView>
       </View>
     );
   }
