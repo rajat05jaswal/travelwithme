@@ -11,7 +11,6 @@ class Location extends Component{
 
     this.watchId=navigator.geolocation.watchPosition(
       (position) => {
-        alert(JSON.stringify(position));
         this.props.updateLocation(position.coords);
       },
       (error) =>alert(JSON.stringify(error)),
@@ -23,7 +22,6 @@ class Location extends Component{
   }
   onRegionChange(region) {
     this.props.updateLocation(region);
-    alert(JSON.stringify(region))
   }
   render() {
     return (
