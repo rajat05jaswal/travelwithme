@@ -4,3 +4,9 @@ export const updateLocation=(data)=>{
     payload:data,
   }
 }
+export const gpsData=(data)=>{
+  return{
+    type:"GPS_LAT_LONG",
+    payload:data,
+  }
+}

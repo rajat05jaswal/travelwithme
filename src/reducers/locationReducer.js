@@ -1,4 +1,8 @@
 const initialState={
+  gps:{
+    lat:18.5204,
+    long:73.8567,
+  },
   region:{
     longitudeDelta: 0.00856,
     latitudeDelta: 0.01398,
@@ -22,6 +26,9 @@ const locationReducer=(state=initialState,action)=>{
           longitude:action.payload.longitude,
           latitude:action.payload.latitude,}
       });
+    }
+    case "GPS_LAT_LONG":{
+      return Object.assign({},state,{gps:{lat:action.payload.latitude,long:action.payload.longitude}})
     }
     default:{
       return state;

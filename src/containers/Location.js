@@ -3,7 +3,7 @@ import {View,Text,StyleSheet,} from 'react-native';
 import {bindActionCreators} from 'redux';
 import MapView from 'react-native-maps';
 import {connect} from 'react-redux';
-import {updateLocation} from '../actions/index';
+import {updateLocation,gpsData} from '../actions/index';
 
 class Location extends Component{
 
@@ -12,6 +12,7 @@ class Location extends Component{
     this.watchId=navigator.geolocation.watchPosition(
       (position) => {
         this.props.updateLocation(position.coords);
+        this.props.gpsData(position.coords);
       },
       (error) =>alert(JSON.stringify(error)),
       {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
@@ -31,6 +32,13 @@ class Location extends Component{
           region={this.props.location.region}
           onRegionChange={this.onRegionChange.bind(this)}
         >
+        <MapView.Marker
+          coordinate={{
+            latitude:this.props.location.gps.lat,
+            longitude:this.props.location.gps.long
+          }}
+          title={"Home"}
+        />
         </MapView>
       </View>
     );
@@ -42,7 +50,7 @@ const mapStateToProps=(state)=>{
   }
 }
 const mapDispatchToProps=(dispatch)=>{
-  return bindActionCreators({updateLocation:updateLocation},dispatch)
+  return bindActionCreators({updateLocation,gpsData},dispatch)
 }
 const styles = StyleSheet.create({
   container: {
