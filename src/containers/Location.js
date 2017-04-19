@@ -11,6 +11,7 @@ class Location extends Component{
 
     this.watchId=navigator.geolocation.watchPosition(
       (position) => {
+        alert(JSON.stringify(position));
         this.props.updateLocation(position.coords);
       },
       (error) =>alert(JSON.stringify(error)),
@@ -20,17 +21,17 @@ class Location extends Component{
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchId);
   }
+  onRegionChange(region) {
+    this.props.updateLocation(region);
+    alert(JSON.stringify(region))
+  }
   render() {
     return (
       <View style={styles.containerBox}>
         <MapView
           style={styles.map}
-          initialRegion={{
-            latitude: this.props.location.lat,
-            longitude: this.props.location.long,
-            latitudeDelta: 0.022,
-            longitudeDelta: 0.0421,
-          }}
+          region={this.props.location.region}
+          onRegionChange={this.onRegionChange.bind(this)}
         >
         </MapView>
       </View>

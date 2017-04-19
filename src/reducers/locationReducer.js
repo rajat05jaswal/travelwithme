@@ -1,11 +1,27 @@
 const initialState={
-  lat:18.5204,
-  long:73.8567,
+  region:{
+    longitudeDelta: 0.00856,
+    latitudeDelta: 0.01398,
+    longitude: 73.8567,
+    latitude: 18.5204,
+  }
 }
 const locationReducer=(state=initialState,action)=>{
   switch(action.type){
     case "Location_Changed_By_GPS":{
-      return Object.assign({},state,{lat:action.payload.latitude,long:action.payload.longitude});
+      const longDel=action.payload.longitudeDelta;
+      const latDel=action.payload.latitudeDelta;
+      if(longDel===undefined ||latDel===undefined){
+        longDel=state.region.longitudeDelta;
+        latDel=state.region.latitudeDelta;
+      }
+      return Object.assign({},state,{region:
+        {
+          longitudeDelta:longDel,
+          latitudeDelta:latDel,
+          longitude:action.payload.longitude,
+          latitude:action.payload.latitude,}
+      });
     }
     default:{
       return state;
