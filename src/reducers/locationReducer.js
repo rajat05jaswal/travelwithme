@@ -1,7 +1,7 @@
 const initialState={
   gps:{
-    lat:18.5204,
-    long:73.8567,
+    lat:0,
+    long:0,
   },
   region:{
     longitudeDelta: 0.00856,

@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {View} from 'react-native';
-import Location from './Location';
+import SignIn from './SignIn';
 import {Provider} from 'react-redux';
 import {createStore,applyMiddleware} from 'redux';
 import Reducer from '../reducers/index';
@@ -10,7 +10,7 @@ export default class Main extends Component{
   render(){
     return(
       <Provider store={store}>
-        <Location/>
+        <SignIn/>
       </Provider>
     )
   }
