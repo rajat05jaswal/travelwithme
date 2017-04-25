@@ -37,7 +37,6 @@ export default class SignIn extends Component{
   }
   render() {
         return (
-            <Image source={require('../../images/solo-traveller.jpg')} style={styles.backgroundImage}>
               <Container>
                   <Header>
                       <Left>
@@ -85,7 +84,6 @@ export default class SignIn extends Component{
 
                   </Content>
               </Container>
-            </Image>
         );
     }
 }
