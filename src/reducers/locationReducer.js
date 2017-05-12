@@ -24,7 +24,8 @@ const locationReducer=(state=initialState,action)=>{
           longitudeDelta:longDel,
           latitudeDelta:latDel,
           longitude:action.payload.longitude,
-          latitude:action.payload.latitude,}
+          latitude:action.payload.latitude,
+        }
       });
     }
     case "GPS_LAT_LONG":{
