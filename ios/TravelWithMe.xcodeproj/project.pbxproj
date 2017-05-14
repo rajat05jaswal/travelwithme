@@ -70,6 +70,7 @@
 		911FC9F1AFDC4BDD855E7641 /* Skia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80A10FBC8E8E4D25ACE34D89 /* Skia.ttf */; };
 		DFA7159990024420A8B3FBFC /* Times New Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72A47C75F2CC46BB99F56451 /* Times New Roman.ttf */; };
 		A2E9EEE39AF0448FBD697FC7 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35C1848DF97F4C71907664D1 /* Zocial.ttf */; };
+		929257A2EE5E4156A1CDDC67 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6F7E73A923647C1B43FF023 /* libRCTFBSDK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -325,6 +326,8 @@
 		80A10FBC8E8E4D25ACE34D89 /* Skia.ttf */ = {isa = PBXFileReference; name = "Skia.ttf"; path = "../node_modules/native-base/Fonts/Skia.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		72A47C75F2CC46BB99F56451 /* Times New Roman.ttf */ = {isa = PBXFileReference; name = "Times New Roman.ttf"; path = "../node_modules/native-base/Fonts/Times New Roman.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		35C1848DF97F4C71907664D1 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		20E058E1AF5046009E8923D8 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; name = "RCTFBSDK.xcodeproj"; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		D6F7E73A923647C1B43FF023 /* libRCTFBSDK.a */ = {isa = PBXFileReference; name = "libRCTFBSDK.a"; path = "libRCTFBSDK.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +355,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				0A4A972882F44BA7A98299C6 /* libAirMaps.a in Frameworks */,
+				929257A2EE5E4156A1CDDC67 /* libRCTFBSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +523,7 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				D090F06C19AC42B4A7ADA3D3 /* AirMaps.xcodeproj */,
+				20E058E1AF5046009E8923D8 /* RCTFBSDK.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1124,10 +1129,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-fbsdk\ios\RCTFBSDK/**",
 				);
 			};
 			name = Debug;
@@ -1149,10 +1156,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-fbsdk\ios\RCTFBSDK/**",
 				);
 			};
 			name = Release;
@@ -1175,6 +1184,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-fbsdk\ios\RCTFBSDK/**",
 				);
 			};
 			name = Debug;
@@ -1196,6 +1206,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-fbsdk\ios\RCTFBSDK/**",
 				);
 			};
 			name = Release;
@@ -1226,10 +1237,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-fbsdk\ios\RCTFBSDK/**",
 				);
 			};
 			name = Debug;
@@ -1260,10 +1273,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-fbsdk\ios\RCTFBSDK/**",
 				);
 			};
 			name = Release;
@@ -1289,6 +1304,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1313,6 +1329,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};

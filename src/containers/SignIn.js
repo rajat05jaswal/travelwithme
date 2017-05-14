@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {Text,View,StyleSheet,Image,TextInput,TouchableOpacity} from 'react-native';
-// import { Container, Content, Form, Item, Input,Button,Header
-//   ,Left,Icon,Body,Title,Right,Label,Toast,Spinner } from 'native-base';
+import {Spinner } from 'native-base';
 import firebase from 'firebase';
 export default class SignIn extends Component{
   constructor(props){
@@ -38,34 +37,43 @@ export default class SignIn extends Component{
   }
   render() {
         return (
-              <View style={styles.wrapper}>
-                <Text style={{fontSize:20,textAlign:'center',color:'black'}}> Sign In To Continue </Text>
-                <View >
-                  <TextInput
-                    placeholder="Email"
-                      style={[styles.textInput,styles.label]}
-                      onChangeText={(email) => {
-                        this.setState({email:email});
-                      }}
-                      value={this.state.email}
-                  />
-                </View>
-                <View>
-                  <TextInput
-                    placeholder="Password"
-                      style={[styles.textInput,styles.label]}
-                      onChangeText={(password) => {
-                        this.setState({password:password});
-                      }}
-                      value={this.state.password}
-                  />
-                </View>
-                <View elevation={10} style={styles.signInButton}>
-                  <TouchableOpacity onPress={()=>{this.signInUser.bind(this)}>
-                  <Text style={{fontSize:30,color:'white',
-                  textAlign:'center',}}>SIGN IN</Text>
-                  </TouchableOpacity>
-                </View>
+              <View style={{flex:1}}>
+                <Image source={require('../../images/COVER.jpg')} style={styles.backgroundImage} >
+                  <View style={styles.wrapper}>
+                    <Text style={{fontSize:20,textAlign:'center',color:'black'}}> Sign In To Continue
+                    </Text>
+                  <View>
+                    <TextInput
+                      placeholder="Email"
+                        style={[styles.textInput,styles.label]}
+                        onChangeText={(email) => {
+                          this.setState({email:email});
+                        }}
+                        value={this.state.email}
+                    />
+                  </View>
+                  <View>
+                    <TextInput
+                      placeholder="Password"
+                        style={[styles.textInput,styles.label]}
+                        onChangeText={(password) => {
+                          this.setState({password:password});
+                        }}
+                        value={this.state.password}
+                    />
+                  </View>
+                  {(!this.state.loading)?
+                    <View elevation={10} style={styles.signInButton}>
+                      <TouchableOpacity onPress={()=>this.signInUser()}>
+                      <Text style={{fontSize:30,color:'white',
+                      textAlign:'center',}}>SIGN IN</Text>
+                      </TouchableOpacity>
+                    </View>
+                    :
+                    <Spinner/>
+                  }
+                  </View>
+                </Image>
               </View>
         );
     }
@@ -89,15 +97,17 @@ const styles = StyleSheet.create({
   },
   textInput:{
     textAlign:'center',
+    color:'white',
+    fontSize:30,
   },
   wrapper:{
     padding:50,
     alignItems:'center',
-    flex:1,
   },
   label:{
     marginTop:30,
     width:280,
+    color:'#fff'
   },
   signInButton:{
     marginTop:40,
@@ -105,5 +115,14 @@ const styles = StyleSheet.create({
     width:200,
     borderRadius:50,
     backgroundColor:'#feac00',
+  },
+  loader:{
+    marginTop:40,
+  },
+  backgroundImage:{
+    flex: 1,
+    alignSelf:'stretch',
+    height:null,
+    width:null,
   }
 });
