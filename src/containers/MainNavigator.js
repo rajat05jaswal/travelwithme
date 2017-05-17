@@ -16,7 +16,7 @@ export default class MainNavigator extends Component{
       });
         switch(route.id){
           case "SignIn":
-           return (<View></View>);
+           return (<SignIn navigator={navigator} title="Login Page"/>);
 
           case "Profile":
           return (<Profile navigator={navigator} title="Profile Page"/>);
@@ -37,4 +37,3 @@ export default class MainNavigator extends Component{
     )
   }
 }
-//<SignIn navigator={navigator} title="Login Page"/>
