@@ -2,6 +2,11 @@ import React,{Component} from 'react';
 import {Text,View,StyleSheet,Image,TextInput,TouchableOpacity} from 'react-native';
 import {Spinner } from 'native-base';
 import firebase from 'firebase';
+import FBSDK from 'react-native-fbsdk';
+const {
+  LoginButton,
+  ShareDialog,
+} = FBSDK;
 export default class SignIn extends Component{
   constructor(props){
     super(props);
@@ -42,36 +47,39 @@ export default class SignIn extends Component{
                   <View style={styles.wrapper}>
                     <Text style={{fontSize:20,textAlign:'center',color:'black'}}> Sign In To Continue
                     </Text>
-                  <View>
-                    <TextInput
-                      placeholder="Email"
-                        style={[styles.textInput,styles.label]}
-                        onChangeText={(email) => {
-                          this.setState({email:email});
-                        }}
-                        value={this.state.email}
-                    />
-                  </View>
-                  <View>
-                    <TextInput
-                      placeholder="Password"
-                        style={[styles.textInput,styles.label]}
-                        onChangeText={(password) => {
-                          this.setState({password:password});
-                        }}
-                        value={this.state.password}
-                    />
-                  </View>
-                  {(!this.state.loading)?
-                    <View elevation={10} style={styles.signInButton}>
-                      <TouchableOpacity onPress={()=>this.signInUser()}>
-                      <Text style={{fontSize:30,color:'white',
-                      textAlign:'center',}}>SIGN IN</Text>
-                      </TouchableOpacity>
+                    <View>
+                      <TextInput
+                        placeholder="Email"
+                          style={[styles.textInput,styles.label]}
+                          onChangeText={(email) => {
+                            this.setState({email:email});
+                          }}
+                          value={this.state.email}
+                      />
                     </View>
-                    :
-                    <Spinner/>
-                  }
+                    <View>
+                      <TextInput
+                        placeholder="Password"
+                          style={[styles.textInput,styles.label]}
+                          onChangeText={(password) => {
+                            this.setState({password:password});
+                          }}
+                          value={this.state.password}
+                      />
+                    </View>
+                    {(!this.state.loading)?
+                      <View elevation={10} style={styles.signInButton}>
+                        <TouchableOpacity onPress={()=>this.signInUser()}>
+                        <Text style={{fontSize:30,color:'white',
+                        textAlign:'center',}}>SIGN IN</Text>
+                        </TouchableOpacity>
+                      </View>
+                      :
+                      <Spinner/>
+                    }
+                  </View>
+                  <View style={styles.fbLogin}>
+                    <LoginButton/>
                   </View>
                 </Image>
               </View>
@@ -80,14 +88,6 @@ export default class SignIn extends Component{
 }
 
 const styles = StyleSheet.create({
-  // signInSignOutWrapper:{
-  //   alignItems:'center',
-  //   justifyContent:'center',
-  //   marginTop:20,
-  // },
-  // text:{
-  //   color:'white',
-  // },
   backgroundImage:{
     flex:1,
     resizeMode:'cover',
@@ -124,5 +124,8 @@ const styles = StyleSheet.create({
     alignSelf:'stretch',
     height:null,
     width:null,
+  },
+  fbLogin:{
+    alignItems:'center',
   }
 });
