@@ -3,6 +3,7 @@ import {Text,View,StyleSheet,Image,TextInput,TouchableOpacity} from 'react-nativ
 import {Spinner } from 'native-base';
 import firebase from 'firebase';
 import FBSDK from 'react-native-fbsdk';
+import TestFacebook from './TestFacebook';
 const {
   LoginButton,
   ShareDialog,
@@ -79,7 +80,7 @@ export default class SignIn extends Component{
                     }
                   </View>
                   <View style={styles.fbLogin}>
-                    <LoginButton/>
+                    <TestFacebook navigator={this.props.navigator}/>
                   </View>
                 </Image>
               </View>

@@ -10,3 +10,9 @@ export const gpsData=(data)=>{
     payload:data,
   }
 }
+export const userProfile=(data)=>{
+  return{
+    type:"USER_DATA_FROM_FB",
+    payload:data,
+  }
+}

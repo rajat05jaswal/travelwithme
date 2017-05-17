@@ -1,16 +1,6 @@
-const initialState={
-  gps:{
-    lat:0,
-    long:0,
-  },
-  region:{
-    longitudeDelta: 0.00856,
-    latitudeDelta: 0.01398,
-    longitude: 73.8567,
-    latitude: 18.5204,
-  }
-}
-const locationReducer=(state=initialState,action)=>{
+import initialState from './initialState';
+
+const locationReducer=(state=initialState(),action)=>{
   switch(action.type){
     case "Location_Changed_By_GPS":{
       const longDel=action.payload.longitudeDelta;
