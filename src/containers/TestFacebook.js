@@ -9,7 +9,15 @@ const {
 }=FBSDK;
 
 class TestFacebook extends Component{
-
+  _responseInfoCallback(error, result){
+    if (error) {
+      console.log(error)
+      alert('Error fetching data: ' + error.toString());
+    } else {
+      console.log(result)
+      alert('Success fetching data: ' + result.toString());
+    }
+  }
   render(){
     return(
       <View>
@@ -26,17 +34,6 @@ class TestFacebook extends Component{
                   (data) => {
                     let accessToken = data.accessToken
                     alert(accessToken.toString())
-
-                    const responseInfoCallback = (error, result) => {
-                      if (error) {
-                        console.log(error)
-                        alert('Error fetching data: ' + error.toString());
-                      } else {
-                        console.log(result)
-                        alert('Success fetching data: ' + result.toString());
-                      }
-                    }
-
                     const infoRequest = new GraphRequest(
                       '/me',
                       {
@@ -47,7 +44,7 @@ class TestFacebook extends Component{
                           }
                         }
                       },
-                      responseInfoCallback
+                      this._responseInfoCallback
                     );
                     // Start the graph request.
                     new GraphRequestManager().addRequest(infoRequest).start()
