@@ -29,10 +29,10 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     // Initialize the SDK before executing any other operations.
-//    FacebookSdk.sdkInitialize(getApplicationContext());
+    FacebookSdk.sdkInitialize(getApplicationContext());
     // Use AppEventsLogger to log custom events.3
-    SoLoader.init(this, /* native exopackage */ false);
-//    AppEventsLogger.activateApp(this);
+//    SoLoader.init(this, /* native exopackage */ false);
+    AppEventsLogger.activateApp(this);
   }
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
@@ -44,7 +44,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
               new MainReactPackage(),
-//              new FBSDKPackage(mCallbackManager),
+              new FBSDKPackage(mCallbackManager),
               new MapsPackage()
       );
     }
