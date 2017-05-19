@@ -16,3 +16,9 @@ export const userProfile=(data)=>{
     payload:data,
   }
 }
+export const loginStatus=(data)=>{
+  return{
+    type:"LOGIN_STATUS",
+    payload:data,
+  }
+}

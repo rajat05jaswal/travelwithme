@@ -9,6 +9,7 @@ const {
   ShareDialog,
 } = FBSDK;
 export default class SignIn extends Component{
+
   constructor(props){
     super(props);
     this.state={
@@ -80,7 +81,7 @@ export default class SignIn extends Component{
                     }
                   </View>
                   <View style={styles.fbLogin}>
-                    <TestFacebook navigator={this.props.navigator}/>
+                    <TestFacebook navigation={this.props.navigation}/>
                   </View>
                 </Image>
               </View>

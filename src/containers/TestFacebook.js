@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {View,Text,TouchableHighlight} from 'react-native';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {userProfile} from '../actions/index';
+import {userProfile,loginStatus} from '../actions/index';
 import FBSDK from 'react-native-fbsdk';
 
 const {
@@ -13,17 +13,50 @@ const {
 }=FBSDK;
 
 class TestFacebook extends Component{
+  componentWillMount(){
+    this.updateUserAccordingToFBQuery();
+    AccessToken.getCurrentAccessToken().then(
+            (data) => {
+              if(data!==null){
+                console.log(data);
+                
+                this.props.navigation.navigate('AfterSignIn')
+              }
+            } //Refresh it every time
+        );
+  }
   _responseInfoCallback=(error, result)=>{
     if (error) {
       console.log(error)
       alert('Error fetching data: ' + error.toString());
     } else {
       this.props.updateUser(result);
+      this.props.loginStatus(true);
       alert('Success fetching data: ' + result.toString());
-      this.props.navigator.push({
-        id:"Profile"
-      })
     }
+  }
+
+  updateUserAccordingToFBQuery=()=>{
+    AccessToken.getCurrentAccessToken().then(
+      (data) => {
+        let accessToken = data.accessToken
+
+        const infoRequest = new GraphRequest(
+          '/me',
+          {
+            accessToken: accessToken,
+            parameters: {
+              fields: {
+                string: 'email,name,first_name,middle_name,last_name'
+              }
+            }
+          },
+          this._responseInfoCallback
+        );
+        // Start the graph request.
+        new GraphRequestManager().addRequest(infoRequest).start()
+      }
+    )
   }
   render(){
     return(
@@ -37,27 +70,7 @@ class TestFacebook extends Component{
               } else if (result.isCancelled) {
                 alert("login is cancelled.");
               } else {
-
-                AccessToken.getCurrentAccessToken().then(
-                  (data) => {
-                    let accessToken = data.accessToken
-
-                    const infoRequest = new GraphRequest(
-                      '/me',
-                      {
-                        accessToken: accessToken,
-                        parameters: {
-                          fields: {
-                            string: 'email,name,first_name,middle_name,last_name'
-                          }
-                        }
-                      },
-                      this._responseInfoCallback
-                    );
-                    // Start the graph request.
-                    new GraphRequestManager().addRequest(infoRequest).start()
-                  }
-                )
+                this.updateUserAccordingToFBQuery();
               }
             }
           }
@@ -67,7 +80,12 @@ class TestFacebook extends Component{
     );
   }
 }
+const mapStateToProps=(state)=>{
+  return{
+    user:fbReducer,
+  }
+}
 const mapDispatchToProps=(dispatch)=>{
-  return bindActionCreators({updateUser:userProfile},dispatch);
+  return bindActionCreators({updateUser:userProfile,loginStatus:loginStatus},dispatch);
 }
 export default connect(null,mapDispatchToProps)(TestFacebook);

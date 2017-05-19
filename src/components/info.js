@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import {View,Image,StyleSheet,Text} from 'react-native';
 
 export default class InfoMenu extends Component {
-  
+
   render() {
     return (
     	<View style={[styles.InfoMenu]}>
-        <Text style={[styles.InfoText]}>Srishti Maheshwari</Text>
-        <Text style={[styles.InfoText]}>Jaipur, India</Text>
+        <Text style={[styles.InfoText]}>{this.props.info.first_name} {this.props.info.last_name}</Text>
+        <Text style={[styles.InfoText]}>Pune, India</Text>
           </View>
     );
   }
@@ -21,6 +21,6 @@ const styles = StyleSheet.create({
     fontSize:25,
     color:"white",
     fontWeight:"bold"
-  } 
+  }
 
 });

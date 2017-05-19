@@ -14,7 +14,8 @@ const initialState=()=>{
         userProfile:{
           first_name:"Himanshu",
           last_name:"Mahajan",
-        }
+        },
+        loginStatus:false,
     }
   )
 }

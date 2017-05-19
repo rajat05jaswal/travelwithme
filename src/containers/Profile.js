@@ -1,13 +1,52 @@
 import React,{Component} from 'react';
-import {View,Text} from 'react-native';
+import { AppRegistry, View,Image,Text,StyleSheet,Dimensions,TouchableOpacity } from 'react-native';
+import ProfilePicture from '../components/profilePicture';
+import MessageMenu from '../components/messageMenu.js'
+import PostMenu from '../components/Post.js'
+import PhotoMenu from '../components/photos.js'
+import ChatMenu from '../components/chats.js'
+import FollowerMenu from '../components/followers.js'
+import FavMenu from '../components/favourite.js'
+import NotifyMenu from '../components/notify.js'
+import VisitMenu from '../components/visits.js'
+import SettingMenu from '../components/settings.js'
+import InfoMenu from '../components/info.js'
+import ProfileIcons from '../components/profileIcons.js'
 import {connect} from 'react-redux';
 class Profile extends Component{
   render(){
     return(
-      <View>
-      <Text style={styles.name}>Welcome {this.props.user.userProfile.first_name}</Text>
-      <Text style={styles.name}>The Awsome {this.props.user.userProfile.last_name}</Text>
-      </View>
+      <View style={styles.backgroundImage}>
+     	<TouchableOpacity>
+     	<Image source={require('../../images/profilepic.jpeg')} style={styles.backgroundImage} />
+        </TouchableOpacity>
+        <View style={styles.backgroundImageLayer} />
+        	<Text style={styles.profileText}>PROFILE</Text>
+
+        	<View style={{flexDirection:'row',position:"absolute"}}>
+        		<ProfilePicture/>
+        		<InfoMenu info={this.props.user.userProfile}/>
+       		</View>
+
+      		<View style={styles.iconConatiner} >
+      			<View style={{flexDirection: 'row'}}>
+        			<MessageMenu/>
+        			<PostMenu/>
+        			<PhotoMenu/>
+        		</View>
+         		<View style={{flexDirection: 'row'}}>
+        			<ChatMenu/>
+        			<FollowerMenu/>
+        			<FavMenu/>
+        		</View>
+        		<View style={{flexDirection: 'row'}}>
+        			<NotifyMenu/>
+        			<VisitMenu/>
+        			<SettingMenu/>
+                </View>
+        	</View>
+    </View>
+
     )
   }
 }
@@ -17,9 +56,38 @@ const mapStateToProps=(state)=>{
   }
 }
 const styles={
-  name:{
-    fontSize:32,
-    fontWeight:'bold',
-  }
+  backgroundImage:{
+  height:(Dimensions).get('window').height,
+  width:(Dimensions).get('window').width,
+  },
+  backgroundImageLayer:{
+  	position: "absolute",
+     top: 0,
+ 	left: 0,
+ 	backgroundColor: "rgba(0,0,0,0.75)",
+ 	height:(Dimensions).get('window').height,
+ 	width:(Dimensions).get('window').width
+  },
+   profileText:{
+   	fontSize:28,
+   	alignItems:'center',
+   	marginLeft:20,
+   	position:"absolute",
+   	color:"white",
+   	fontWeight:"bold"
+   },
+   iconConatiner:{
+   	justifyContent:'center',
+   	alignItems:'center',
+   	marginTop:250,
+   	marginLeft:30,
+   	position:"absolute"
+   }
+
 }
-export default connect({mapStateToProps})(Profile);
+export default connect(mapStateToProps)(Profile);
+
+// <View>
+// <Text style={styles.name}>Welcome {this.props.user.userProfile.first_name}</Text>
+// <Text style={styles.name}>The Awsome {this.props.user.userProfile.last_name}</Text>
+// </View>
