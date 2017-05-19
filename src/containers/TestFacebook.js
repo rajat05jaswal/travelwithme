@@ -25,6 +25,7 @@ class TestFacebook extends Component{
           onLoginFinished={
             (error, result) => {
               if (error) {
+                console.log("Error");
                 alert("login has error: " + result.error);
               } else if (result.isCancelled) {
                 alert("login is cancelled.");
