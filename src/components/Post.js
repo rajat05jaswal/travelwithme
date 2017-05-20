@@ -10,7 +10,7 @@ export default class PostMenu extends Component {
     	<TouchableHighlight  onPress={()=>{alert("Pressed Posts");}}>
     	<View>
            <Text style={{color:"white",fontWeight:"bold"}}>Posts</Text>
-           <Icon name="photo" size={50} color="#ffffff" style={{padding:10}} />
+           <Icon name="edit" size={50} color="#ffffff" style={{padding:10}} />
          </View>
     	</TouchableHighlight>
     	</View>

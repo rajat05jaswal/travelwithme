@@ -12,7 +12,7 @@ export default class Main extends Component{
   render(){
     return(
       <Provider store={store}>
-        <Profile />
+        <SignIn />
       </Provider>
     )
   }
