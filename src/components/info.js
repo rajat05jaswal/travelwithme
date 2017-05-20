@@ -15,10 +15,12 @@ export default class InfoMenu extends Component {
 const styles = StyleSheet.create({
 	InfoMenu:{
 		marginLeft:20,
-		marginTop:40,
+		marginTop:80,
 	},
   InfoText:{
-    fontSize:25
+    fontSize:25,
+    color:"white",
+    fontWeight:"bold"
   } 
 
 });
