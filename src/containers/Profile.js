@@ -11,7 +11,6 @@ import NotifyMenu from '../components/notify.js'
 import VisitMenu from '../components/visits.js'
 import SettingMenu from '../components/settings.js'
 import InfoMenu from '../components/info.js'
-import ProfileIcons from '../components/profileIcons.js'
 import {connect} from 'react-redux';
 class Profile extends Component{
   render(){
@@ -79,9 +78,8 @@ const styles={
    iconConatiner:{
    	justifyContent:'center',
    	alignItems:'center',
-   	marginTop:250,
-   	marginLeft:30,
-   	position:"absolute"
+    marginTop:(Dimensions).get('window').width/2+80,   	
+    position:"absolute"
    }
 
 }

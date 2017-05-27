@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, View,Image,Text,StyleSheet,TouchableHighlight  } from 'react-native';
+import { AppRegistry, View,Image,Text,StyleSheet,TouchableHighlight,Dimensions  } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class ChatMenu extends Component {
@@ -20,8 +20,8 @@ export default class ChatMenu extends Component {
 };
 const styles = StyleSheet.create({
 	ChatMenu:{
-		width: 100,
-		height: 100,
+		height:(Dimensions).get('window').height/4-60,
+    width:(Dimensions).get('window').width/3,
 		alignItems:'center',
 		borderRightWidth:1,
 		borderBottomWidth:1,
