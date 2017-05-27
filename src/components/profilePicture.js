@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import {View,Image,StyleSheet } from 'react-native';
 
 export default class ProfilePicture extends Component {
-  
+
   render() {
     return (
     	<View>
         <Image
           style={[styles.ImageTab]}
-          source={require('../../images/profilepic.jpeg')}/>
+          source={{uri:this.props.picture}}/>
           </View>
     );
   }
@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
 		height: 100,
 		borderRadius:144,
 		marginTop:80,
-	} 
+	}
 
 });

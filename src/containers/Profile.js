@@ -18,13 +18,13 @@ class Profile extends Component{
     return(
       <View style={styles.backgroundImage}>
      	<TouchableOpacity>
-     	<Image source={require('../../images/profilepic.jpeg')} style={styles.backgroundImage} />
+     	<Image source={{uri:this.props.user.userProfile.picture}} style={styles.backgroundImage} />
         </TouchableOpacity>
         <View style={styles.backgroundImageLayer} />
         	<Text style={styles.profileText}>PROFILE</Text>
 
         	<View style={{flexDirection:'row',position:"absolute"}}>
-        		<ProfilePicture/>
+        		<ProfilePicture picture={this.props.user.userProfile.picture}/>
         		<InfoMenu info={this.props.user.userProfile}/>
        		</View>
 
@@ -64,7 +64,7 @@ const styles={
   	position: "absolute",
      top: 0,
  	left: 0,
- 	backgroundColor: "rgba(0,0,0,0.75)",
+ 	backgroundColor: "rgba(0,0,0,0.50)",
  	height:(Dimensions).get('window').height,
  	width:(Dimensions).get('window').width
   },

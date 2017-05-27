@@ -9,21 +9,13 @@ const {
   LoginButton,
   AccessToken,
   GraphRequest,
-  GraphRequestManager
+  GraphRequestManager,
+  LoginManager
 }=FBSDK;
 
 class TestFacebook extends Component{
   componentWillMount(){
     this.updateUserAccordingToFBQuery();
-    AccessToken.getCurrentAccessToken().then(
-            (data) => {
-              if(data!==null){
-                console.log(data);
-                
-                this.props.navigation.navigate('AfterSignIn')
-              }
-            } //Refresh it every time
-        );
   }
   _responseInfoCallback=(error, result)=>{
     if (error) {
@@ -32,7 +24,8 @@ class TestFacebook extends Component{
     } else {
       this.props.updateUser(result);
       this.props.loginStatus(true);
-      alert('Success fetching data: ' + result.toString());
+      this.props.navigation.navigate('AfterSignIn')
+      console.log(result);
     }
   }
 
@@ -40,14 +33,14 @@ class TestFacebook extends Component{
     AccessToken.getCurrentAccessToken().then(
       (data) => {
         let accessToken = data.accessToken
-
+        console.log(accessToken);
         const infoRequest = new GraphRequest(
           '/me',
           {
             accessToken: accessToken,
             parameters: {
               fields: {
-                string: 'email,name,first_name,middle_name,last_name'
+                string: 'name,location,picture.height(700).width(700)'
               }
             }
           },
@@ -62,6 +55,7 @@ class TestFacebook extends Component{
     return(
       <View>
       <LoginButton
+          publishPermissions={["publish_actions,user_location"]}
           onLoginFinished={
             (error, result) => {
               if (error) {

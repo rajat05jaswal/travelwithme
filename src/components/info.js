@@ -6,8 +6,8 @@ export default class InfoMenu extends Component {
   render() {
     return (
     	<View style={[styles.InfoMenu]}>
-        <Text style={[styles.InfoText]}>{this.props.info.first_name} {this.props.info.last_name}</Text>
-        <Text style={[styles.InfoText]}>Pune, India</Text>
+        <Text style={[styles.InfoText]}>{this.props.info.name}</Text>
+        <Text style={[styles.InfoText]}>{this.props.info.location}</Text>
           </View>
     );
   }

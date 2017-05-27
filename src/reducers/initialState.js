@@ -12,8 +12,9 @@ const initialState=()=>{
           latitude: 18.5204,
         },
         userProfile:{
-          first_name:"Himanshu",
-          last_name:"Mahajan",
+          name:"Himanshu Mahajan",
+          picture:"",
+          location:"Delhi"
         },
         loginStatus:false,
     }
