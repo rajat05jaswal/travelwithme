@@ -3,6 +3,7 @@ import {TabNavigator,StackNavigator} from 'react-navigation';
 import Profile from '../containers/Profile';
 import SignIn from '../containers/SignIn';
 import Location from '../containers/Location';
+import LandingPage from '../containers/LandingPage';
 
 export const Tabs=TabNavigator({
   Profile:{
@@ -11,6 +12,9 @@ export const Tabs=TabNavigator({
   Location:{
     screen:Location,
   },
+  LandingPage:{
+    screen:LandingPage,
+  }
 });
 export const LoginThrough=StackNavigator({
   SignIn:{

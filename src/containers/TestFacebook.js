@@ -33,7 +33,6 @@ class TestFacebook extends Component{
     AccessToken.getCurrentAccessToken().then(
       (data) => {
         let accessToken = data.accessToken
-        console.log(accessToken);
         const infoRequest = new GraphRequest(
           '/me',
           {

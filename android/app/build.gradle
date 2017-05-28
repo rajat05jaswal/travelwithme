@@ -134,6 +134,8 @@ dependencies {
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile "com.airbnb.android:react-native-maps:+"
     compile project(':react-native-fbsdk')
+    compile project(':react-native-geocoder')
+    compile project(':react-native-vector-icons')
 //    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
 }
 
