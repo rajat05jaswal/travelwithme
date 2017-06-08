@@ -1,5 +1,5 @@
 import React from 'react';
-import {TabNavigator,StackNavigator} from 'react-navigation';
+import {TabNavigator,StackNavigator,DrawerNavigator} from 'react-navigation';
 import Profile from '../containers/Profile';
 import SignIn from '../containers/SignIn';
 import Location from '../containers/Location';

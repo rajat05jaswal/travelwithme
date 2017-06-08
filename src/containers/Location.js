@@ -37,8 +37,11 @@ class Location extends Component{
             latitude:this.props.location.gps.lat,
             longitude:this.props.location.gps.long
           }}
-          title={"Home"}
-        />
+          title={"Me"}>
+          <View style={styles.radius}>
+            <View style={styles.marker}/>
+          </View>
+          </MapView.Marker>
         </MapView>
       </View>
     );
@@ -85,5 +88,25 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
   },
+  radius:{
+    height:70,
+    width:70,
+    borderRadius:70/2,
+    overflow:'hidden',
+    backgroundColor:'rgba(0,132,255,0.1)',
+    borderWidth:1,
+    borderColor:'rgba(0,112,255,0.3)',
+    alignItems:'center',
+    justifyContent:'center'
+  },
+  marker:{
+    height:15,
+    width:15,
+    borderWidth:1,
+    borderRadius:20/2,
+    overflow:'hidden',
+    borderColor:'white',
+    backgroundColor:'#007AFF'
+  }
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Location);
