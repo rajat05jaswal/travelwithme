@@ -24,6 +24,7 @@
         android:name=".MainActivity"
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+          android:hardwareAccelerated="true"
         android:windowSoftInputMode="adjustPan">
 
         <intent-filter>
@@ -34,7 +35,7 @@
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
       <meta-data
           android:name="com.google.android.geo.API_KEY"
-          android:value="AIzaSyDE1ZO1S3ShdGaF7DjNeppncBwcPwVz8OE"/>
+          android:value="AIzaSyBHJy7dYBMnG2lmnJg_E3ThwXnqFyXoOwg"/>
     </application>
 
 </manifest>

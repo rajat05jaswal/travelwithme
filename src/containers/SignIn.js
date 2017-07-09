@@ -33,14 +33,14 @@ export default class SignIn extends Component{
     })
   }
   componentWillMount(){
-    firebase.initializeApp({
-    apiKey: "AIzaSyDDFgfKG-kNAEj6pA3haDICD8DwQ0mVIAM",
-    authDomain: "travelwithme-1492532761725.firebaseapp.com",
-    databaseURL: "https://travelwithme-1492532761725.firebaseio.com",
-    projectId: "travelwithme-1492532761725",
-    storageBucket: "travelwithme-1492532761725.appspot.com",
-    messagingSenderId: "384185060035"
-  });
+  //   firebase.initializeApp({
+  //   apiKey: "AIzaSyDDFgfKG-kNAEj6pA3haDICD8DwQ0mVIAM",
+  //   authDomain: "travelwithme-1492532761725.firebaseapp.com",
+  //   databaseURL: "https://travelwithme-1492532761725.firebaseio.com",
+  //   projectId: "travelwithme-1492532761725",
+  //   storageBucket: "travelwithme-1492532761725.appspot.com",
+  //   messagingSenderId: "384185060035"
+  // });
   }
   render() {
         return (

@@ -39,14 +39,18 @@ class LandingPage extends Component{
 
   }
   openSearchModal() {
-    RNGooglePlaces.openPlacePickerModal()
+    RNGooglePlaces.openAutocompleteModal({
+      useOverlay :false
+    })
     .then((place) => {
+
         console.log(place);
         this.setState({destination:place.name});
     })
     .catch(error => console.log(error.message));  // error is a Javascript Error object
   }
   render(){
+    console.log(RNGooglePlaces);
     this.getSource();
     return(
       <View style={styles.container}>
