@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
-import {View,Text,TouchableOpacity} from 'react-native';
+import {View,Text,TouchableOpacity,ScrollView} from 'react-native';
 import {connect} from 'react-redux';
 import Geocoder from 'react-native-geocoder';
 import RNGooglePlaces from 'react-native-google-places';
+import {Calendar} from 'react-native-calendars';
 
 class LandingPage extends Component{
   constructor(props){
@@ -11,10 +12,11 @@ class LandingPage extends Component{
       city:"",
       destination:""
     }
+    this.onDayPress=this.onDayPress.bind(this);
   }
 
   shouldComponentUpdate(nextProps,nextState){
-    if(this.props.lat !== nextProps.lat || this.state.city !==nextState.city || this.state.destination !==nextState.destination){
+    if(this.props.lat !== nextProps.lat || this.state.city !==nextState.city || this.state.destination !==nextState.destination||this.state.selected !== nextState.selected){
       return true;
     }
     else{
@@ -49,21 +51,43 @@ class LandingPage extends Component{
     })
     .catch(error => console.log(error.message));  // error is a Javascript Error object
   }
+
+  onDayPress(day) {
+
+    this.setState({
+      selected: day.dateString
+    });
+    console.log(this.state.selected);
+  }
   render(){
-    console.log(RNGooglePlaces);
     this.getSource();
     return(
-      <View style={styles.container}>
-        <Text style={styles.sourceText}>CITY : {this.state.city}</Text>
-        <View>
-        <TouchableOpacity
-          onPress={() => this.openSearchModal()}
-        >
-          <Text>Pick a Place</Text>
-        </TouchableOpacity>
+      <ScrollView style={styles.container}>
+        <View style={styles.sourceContainer}>
+          <Text style={styles.sourceText}>Travelling From </Text>
+          <Text>{this.state.city}</Text>
         </View>
-        <Text style={styles.destinationText}>{this.state.destination}</Text>
-      </View>
+        <View style={styles.destinationContainer}>
+          <TouchableOpacity
+            style={styles.SearchModal}
+            onPress={() => this.openSearchModal()}
+          >
+            <Text style={styles.desinationButton}>Travelling To</Text>
+          </TouchableOpacity>
+
+          <Text style={styles.destinationText}>{this.state.destination}</Text>
+        </View>
+        <View style={styles.calendarWrapper}>
+          <Text style={styles.calendarHeaderText}>When you travelling?</Text>
+          <Text style={styles.resultText}>{this.state.selected}</Text>
+          <Calendar
+            onDayPress={this.onDayPress}
+            style={styles.calendar}
+            hideExtraDays
+            markedDates={{[this.state.selected]: {selected: true}}}
+          />
+        </View>
+      </ScrollView>
     )
   }
 }
@@ -75,14 +99,36 @@ const mapStateToProps=(state)=>{
 }
 const styles={
   container:{
-    justifyContent:'center',
-    alignItems:'center'
+    flex:1
+  },
+  sourceContainer:{
+    justifyContent:'space-around'
+  },
+  destinationContainer:{
+    marginTop:20,
+    justifyContent:'space-around'
   },
   sourceText:{
-    fontSize:30
+    fontSize:20
+  },
+  desinationButton:{
+    fontSize:20
   },
   destinationText:{
     fontSize:30
+  },
+  calendarWrapper:{
+    marginTop:20
+  },
+  calendar: {
+    borderTopWidth: 1,
+    paddingTop: 5,
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+    height: 450
+  },
+  calendarHeaderText:{
+    fontSize:20
   }
 }
 export default connect(mapStateToProps,null)(LandingPage);
