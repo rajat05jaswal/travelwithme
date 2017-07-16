@@ -8,8 +8,9 @@ export default class ProfilePicture extends Component {
     	<View>
         <Image
           style={[styles.ImageTab]}
-          source={{uri:this.props.picture}}/>
-          </View>
+          source={{uri:this.props.picture}}
+        />
+      </View>
     );
   }
 };
